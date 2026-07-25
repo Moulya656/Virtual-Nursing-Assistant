@@ -1,0 +1,30 @@
+{
+  "name": "healthcare-reminder-system",
+  "version": "1.0.0",
+  "description": "Healthcare Reminder System Backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "csv-parser": "^3.2.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^8.5.1",
+    "node-cron": "^4.2.1",
+    "nodemailer": "^7.0.10",
+    "openai": "^6.8.1",
+    "sqlite3": "^5.1.7",
+    "twilio": "^5.10.6"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.14"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
