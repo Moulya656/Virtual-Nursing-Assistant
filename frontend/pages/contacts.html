@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Contacts - Healthcare Reminder System</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="main-nav">
+            <div class="nav-brand">
+                <h2>Healthcare Reminder System</h2>
+            </div>
+            <div class="nav-links">
+                <a href="medications.html">Medications</a>
+                <a href="appointments.html">Appointments</a>
+                <a href="records.html">Medical Records</a>
+                <a href="profile.html">Patient Details</a>
+                <a href="contacts.html" class="active">Emergency Contacts</a>
+                <button onclick="logout()" class="logout-btn">Logout</button>
+            </div>
+        </nav>
+
+        <div class="content-area">
+            <div class="page-header">
+                <h1>Emergency Contacts</h1>
+                <button onclick="showAddContactForm()" class="add-btn">Add New Contact</button>
+            </div>
+
+            <div class="contacts-list">
+                <!-- Emergency contact cards will be added here -->
+            </div>
+
+            <div id="add-contact-form" class="modal hidden">
+                <div class="modal-content">
+                    <h2>Add Emergency Contact</h2>
+                    <form onsubmit="return saveContact(event)">
+                        <div class="form-group">
+                            <label for="contact-name">Full Name</label>
+                            <input type="text" id="contact-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-relationship">Relationship</label>
+                            <input type="text" id="contact-relationship" placeholder="Caretaker, Relative, Friend, etc." required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-phone">Phone Number</label>
+                            <input type="tel" id="contact-phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-alt-phone">Alternative Phone</label>
+                            <input type="tel" id="contact-alt-phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email">Email</label>
+                            <input type="email" id="contact-email">
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-address">Address</label>
+                            <textarea id="contact-address" rows="3"></textarea>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="contact-primary">
+                            <label for="contact-primary">Set as Primary Emergency Contact</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-notes">Additional Notes</label>
+                            <textarea id="contact-notes" rows="3"></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" onclick="hideAddContactForm()" class="cancel-btn">Cancel</button>
+                            <button type="submit" class="save-btn">Save Contact</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../app.js"></script>
+</body>
+</html>

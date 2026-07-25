@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare Reminder System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div id="auth-section">
+            <h1>Healthcare Reminder System</h1>
+            <div class="auth-tabs">
+                <button onclick="showLogin()">Login</button>
+                <button onclick="showRegister()">Register</button>
+            </div>
+            
+            <form id="login-form" class="auth-form">
+                <h2>Login</h2>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+                <div class="forgot-password">
+                    <a href="#" onclick="showForgotPassword(); return false;">Forgot Password?</a>
+                </div>
+            </form>
+            
+            <form id="forgot-password-form" class="auth-form hidden">
+                <h2>Reset Password</h2>
+                <input type="email" name="email" placeholder="Enter your email" required>
+                <button type="submit">Send Reset Link</button>
+                <div class="back-to-login">
+                    <a href="#" onclick="showLogin(); return false;">Back to Login</a>
+                </div>
+            </form>
+
+            <form id="reset-password-form" class="auth-form hidden">
+                <h2>Create New Password</h2>
+                <input type="password" id="new-password" placeholder="New Password" required>
+                <input type="password" id="confirm-password" placeholder="Confirm Password" required>
+                <button type="submit">Update Password</button>
+                <div class="back-to-login">
+                    <a href="#" onclick="showLogin(); return false;">Back to Login</a>
+                </div>
+            </form>
+
+            <form id="register-form" class="auth-form hidden">
+                <h2>Register</h2>
+                <input type="text" name="name" placeholder="Full Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <select name="role" required>
+                    <option value="">Select Role</option>
+                    <option value="patient">Patient</option>
+                    <option value="caregiver">Caregiver</option>
+                </select>
+                <button type="submit">Register</button>
+            </form>
+        </div>
+
+        <div id="dashboard" class="hidden">
+            <nav class="main-nav">
+                <div class="nav-left">
+                    <h2>Arogya</h2>
+                </div>
+                <div class="nav-right">
+                    <a href="medications.html" class="feature-button">💊</a>
+                    <a href="appointments.html" class="feature-button">📅</a>
+                    <a href="records.html" class="feature-button">📋</a>
+                    <a href="contacts.html" class="feature-button">📞</a>
+                    <a href="profile.html" class="feature-button">👤</a>
+                    <button onclick="toggleChatbot()" class="feature-button">🤖</button>
+                    <button onclick="logout()" class="logout-btn">Logout</button>
+                </div>
+            </nav>
+            <div class="dashboard-content">
+                <div class="welcome">
+                    <h3>Welcome, <span id="user-name">User</span></h3>
+                </div>
+                <div class="dashboard-image-block">
+                    <img src="../vns.png" alt="VNS Logo" class="dashboard-img">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chatbot Container -->
+    <div id="chat-container" class="hidden">
+        <div class="chat-header">
+            <h3>Arogya Assistant</h3>
+            <button onclick="toggleChatbot()" class="close-chat">✕</button>
+        </div>
+        <div id="chat-box"></div>
+        <div class="chat-input-container">
+            <input id="user-input" type="text" placeholder="Ask me something..." />
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+    function toggleChatbot() {
+      const chatContainer = document.getElementById("chat-container");
+      chatContainer.classList.toggle("hidden");
+    }
+
+    async function sendMessage() {
+      const input = document.getElementById("user-input");
+      const message = input.value;
+      if (!message.trim()) return;
+      
+      document.getElementById("chat-box").innerHTML += `<p><b>You:</b> ${message}</p>`;
+      input.value = "";
+
+      try {
+        // Show loading state
+        document.getElementById("chat-box").innerHTML += `<p><i>Nurse is thinking...</i></p>`;
+        
+        const res = await fetch("http://localhost:3000/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message })
+        });
+        const data = await res.json();
+        console.log("Chatbot response:", data);
+        console.log("Response status:", res.status);
+        
+        // Remove loading message
+        const chatBox = document.getElementById("chat-box");
+        const lastParagraph = chatBox.lastElementChild;
+        if (lastParagraph && lastParagraph.textContent.includes("thinking")) {
+          lastParagraph.remove();
+        }
+        
+        if (!res.ok) {
+          document.getElementById("chat-box").innerHTML += `<p><b style="color: red;">Error:</b> ${data.error || 'Server error'}</p>`;
+        } else if (data.error) {
+          document.getElementById("chat-box").innerHTML += `<p><b style="color: red;">Error:</b> ${data.error}</p>`;
+        } else if (data.reply) {
+          document.getElementById("chat-box").innerHTML += `<p><b style="color: #2ecc71;">Nurse:</b> ${data.reply}</p>`;
+        } else {
+          document.getElementById("chat-box").innerHTML += `<p><b style="color: red;">Error:</b> Invalid response from server</p>`;
+        }
+        // Auto-scroll to bottom
+        document.getElementById("chat-box").scrollTop = document.getElementById("chat-box").scrollHeight;
+      } catch (error) {
+        console.error("Chat error:", error);
+        
+        // Remove loading message
+        const chatBox = document.getElementById("chat-box");
+        const lastParagraph = chatBox.lastElementChild;
+        if (lastParagraph && lastParagraph.textContent.includes("thinking")) {
+          lastParagraph.remove();
+        }
+        
+        document.getElementById("chat-box").innerHTML += `<p><b style="color: red;">Error:</b> Failed to connect to chatbot. Make sure the backend is running at http://localhost:3000</p>`;
+      }
+    }
+
+    // Allow Enter key to send message
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById("user-input").addEventListener("keypress", function(e) {
+        if (e.key === 'Enter') sendMessage();
+      });
+    });
+    </script>
+
+    <style>
+    #chat-container { 
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 350px;
+      border: 2px solid #007bff;
+      border-radius: 12px;
+      background: white;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      display: flex;
+      flex-direction: column;
+      max-height: 500px;
+      z-index: 1000;
+    }
+
+    #chat-container.hidden {
+      display: none;
+    }
+
+    .chat-header {
+      background: #007bff;
+      color: white;
+      padding: 12px 15px;
+      border-radius: 10px 10px 0 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .chat-header h3 {
+      margin: 0;
+      font-size: 16px;
+    }
+
+    .close-chat {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      padding: 0;
+      width: 30px;
+      height: 30px;
+    }
+
+    .close-chat:hover {
+      opacity: 0.8;
+    }
+
+    #chat-box { 
+      height: 300px;
+      overflow-y: auto;
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
+      background: #f9f9f9;
+    }
+
+    #chat-box p {
+      margin: 8px 0;
+      padding: 8px;
+      border-radius: 6px;
+      word-wrap: break-word;
+    }
+
+    #chat-box p b {
+      color: #007bff;
+    }
+
+    .chat-input-container {
+      padding: 12px;
+      display: flex;
+      gap: 8px;
+    }
+
+    #user-input { 
+      flex: 1;
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    #user-input:focus {
+      outline: none;
+      border-color: #007bff;
+    }
+
+    .chat-input-container button { 
+      padding: 8px 16px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .chat-input-container button:hover {
+      background: #0056b3;
+    }
+    </style>
+
+
+
+    
+    <script src="app.js"></script>
+</body>
+</html>

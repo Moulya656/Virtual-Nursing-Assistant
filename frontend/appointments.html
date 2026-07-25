@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointments</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="main-nav">
+            <div class="nav-left">
+                <a href="index.html" class="home-link">🏠 Home</a>
+            </div>
+            <div class="nav-right">
+                <h1>Appointments</h1>
+                
+            </div>
+        </nav>
+        <div class="content-section">
+            <div class="calendar-header">
+                <div class="calendar-controls">
+                        <button id="prev-month" class="icon-btn" title="Previous month">◀</button>
+                        <div id="month-label" class="month-label"></div>
+                        <button id="next-month" class="icon-btn" title="Next month">▶</button>
+                    </div>
+            </div>
+            <div id="calendar"></div>
+            <div id="upcoming-appointments"></div>
+            <div class="add-bottom add-left">
+                <div class="left-actions">
+                    <button onclick="showAddAppointmentForm()" class="icon-btn add-action" aria-label="Add Appointment">
+                        <svg class="add-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                        <span class="btn-label">Add New</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="add-appointment-modal" class="modal hidden">
+            <div class="modal-content appt-modal">
+                <div class="appt-modal-grid">
+                    <div class="appt-modal-header">
+                        <h2>Schedule Appointment</h2>
+                        <p class="muted">Add appointment details and location.</p>
+                    </div>
+                    <form id="appointment-form" class="appt-form">
+                        <div class="form-col col-left">
+                            <div class="form-group">
+                                <label for="app-title">Title</label>
+                                <input type="text" id="app-title" name="title" placeholder="e.g. Dental Checkup" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="app-date">Date</label>
+                                <input type="date" id="app-date" name="date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="app-time">Time</label>
+                                <input type="time" id="app-time" name="time" required>
+                            </div>
+                        </div>
+                        <div class="form-col col-right">
+                            <div class="form-group">
+                                <label for="app-location">Location</label>
+                                <input type="text" id="app-location" name="location" placeholder="Clinic / Hospital / Online">
+                            </div>
+                            <div class="form-group">
+                                <label for="app-subject">About</label>
+                                <textarea id="app-subject" name="subject" rows="4" placeholder="Reason for appointment"></textarea>
+                            </div>
+                            <div class="form-actions med-actions">
+                                <button type="button" class="cancel-btn" onclick="closeAppointmentModal()">Cancel</button>
+                                <button type="submit" class="save-btn">Save Appointment</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="appointments.js"></script>
+</body>
+</html>

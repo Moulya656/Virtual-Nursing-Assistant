@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Tips - Healthcare Reminder System</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="main-nav">
+            <div class="nav-brand">
+                <h2>Healthcare Reminder System</h2>
+            </div>
+            <div class="nav-links">
+                <a href="medications.html">Medications</a>
+                <a href="appointments.html">Appointments</a>
+                <a href="records.html">Medical Records</a>
+                <a href="profile.html">Patient Details</a>
+                <a href="contacts.html">Emergency Contacts</a>
+                <a href="tips.html" class="active">Health Tips</a>
+                <button onclick="logout()" class="logout-btn">Logout</button>
+            </div>
+        </nav>
+
+        <div class="content-area">
+            <div class="page-header">
+                <h1>Daily Health Tips</h1>
+                <div class="category-filter">
+                    <select onchange="filterTips(this.value)">
+                        <option value="all">All Categories</option>
+                        <option value="nutrition">Nutrition</option>
+                        <option value="exercise">Exercise</option>
+                        <option value="mental">Mental Health</option>
+                        <option value="sleep">Sleep</option>
+                        <option value="medication">Medication</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="tips-container">
+                <div class="featured-tip">
+                    <!-- Daily featured health tip will be shown here -->
+                </div>
+
+                <div class="tips-grid">
+                    <!-- Health tip cards will be added here -->
+                </div>
+
+                <div class="health-resources">
+                    <h3>Useful Resources</h3>
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <h4>Nutrition Guidelines</h4>
+                            <p>Learn about balanced diet and healthy eating habits</p>
+                            <a href="#" class="resource-link">Read More</a>
+                        </div>
+                        <div class="resource-card">
+                            <h4>Exercise Routines</h4>
+                            <p>Simple exercises you can do at home</p>
+                            <a href="#" class="resource-link">Read More</a>
+                        </div>
+                        <div class="resource-card">
+                            <h4>Mental Wellness</h4>
+                            <p>Tips for maintaining good mental health</p>
+                            <a href="#" class="resource-link">Read More</a>
+                        </div>
+                        <div class="resource-card">
+                            <h4>Sleep Hygiene</h4>
+                            <p>Improve your sleep quality with these tips</p>
+                            <a href="#" class="resource-link">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="personalized-tips">
+                <h3>Personalized Recommendations</h3>
+                <div class="tips-list">
+                    <!-- Personalized health tips based on user's profile will be shown here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../app.js"></script>
+</body>
+</html>

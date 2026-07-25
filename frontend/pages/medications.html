@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medications - Healthcare Reminder System</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="main-nav">
+            <div class="nav-brand">
+                <h2>Healthcare Reminder System</h2>
+            </div>
+            <div class="nav-links">
+                <a href="medications.html" class="active">Medications</a>
+                <a href="appointments.html">Appointments</a>
+                <a href="records.html">Medical Records</a>
+                <a href="profile.html">Patient Details</a>
+                <a href="contacts.html">Emergency Contacts</a>
+                <button onclick="logout()" class="logout-btn">Logout</button>
+            </div>
+        </nav>
+
+        <div class="content-area">
+            <div class="page-header">
+                <h1>My Medications</h1>
+                <button onclick="showAddMedicationForm()" class="add-btn">Add New Medication</button>
+            </div>
+
+            <div class="medications-list">
+                <!-- Medication cards will be added here dynamically -->
+            </div>
+
+            <div id="add-medication-form" class="modal hidden">
+                <div class="modal-content">
+                    <h2>Add New Medication</h2>
+                    <form onsubmit="return saveMedication(event)">
+                        <div class="form-group">
+                            <label for="med-name">Medication Name</label>
+                            <input type="text" id="med-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="med-dosage">Dosage</label>
+                            <input type="text" id="med-dosage" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="med-frequency">Frequency</label>
+                            <select id="med-frequency" required>
+                                <option value="daily">Daily</option>
+                                <option value="twice">Twice Daily</option>
+                                <option value="thrice">Thrice Daily</option>
+                                <option value="weekly">Weekly</option>
+                                <option value="monthly">Monthly</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="med-time">Time</label>
+                            <input type="time" id="med-time" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="med-start">Start Date</label>
+                            <input type="date" id="med-start" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="med-end">End Date</label>
+                            <input type="date" id="med-end">
+                        </div>
+                        <div class="form-group">
+                            <label for="med-notes">Notes</label>
+                            <textarea id="med-notes" rows="3"></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" onclick="hideAddMedicationForm()" class="cancel-btn">Cancel</button>
+                            <button type="submit" class="save-btn">Save Medication</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../app.js"></script>
+</body>
+</html>

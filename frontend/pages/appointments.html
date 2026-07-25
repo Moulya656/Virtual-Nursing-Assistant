@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointments - Healthcare Reminder System</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="main-nav">
+            <div class="nav-brand">
+                <h2>Healthcare Reminder System</h2>
+            </div>
+            <div class="nav-links">
+                <a href="medications.html">Medications</a>
+                <a href="appointments.html" class="active">Appointments</a>
+                <a href="records.html">Medical Records</a>
+                <a href="profile.html">Patient Details</a>
+                <a href="contacts.html">Emergency Contacts</a>
+                <button onclick="logout()" class="logout-btn">Logout</button>
+            </div>
+        </nav>
+
+        <div class="content-area">
+            <div class="page-header">
+                <h1>My Appointments</h1>
+                <button onclick="showAddAppointmentForm()" class="add-btn">Schedule New Appointment</button>
+            </div>
+
+            <div class="appointments-list">
+                <!-- Appointment cards will be added here dynamically -->
+            </div>
+
+            <div id="add-appointment-form" class="modal hidden">
+                <div class="modal-content">
+                    <h2>Schedule New Appointment</h2>
+                    <form onsubmit="return saveAppointment(event)">
+                        <div class="form-group">
+                            <label for="app-title">Appointment Title</label>
+                            <input type="text" id="app-title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="app-doctor">Doctor Name</label>
+                            <input type="text" id="app-doctor" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="app-location">Location</label>
+                            <input type="text" id="app-location" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="app-date">Date</label>
+                            <input type="date" id="app-date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="app-time">Time</label>
+                            <input type="time" id="app-time" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="app-notes">Notes</label>
+                            <textarea id="app-notes" rows="3"></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" onclick="hideAddAppointmentForm()" class="cancel-btn">Cancel</button>
+                            <button type="submit" class="save-btn">Save Appointment</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../app.js"></script>
+</body>
+</html>

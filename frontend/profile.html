@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Profile</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="main-nav">
+            <div class="nav-left">
+                <a href="index.html" class="home-link">🏠 Home</a>
+            </div>
+            <div class="nav-right">
+                <h1>Profile</h1>
+            </div>
+        </nav>
+        <div class="content-section">
+            <form id="profile-form" class="profile-form">
+                <input type="text" name="name" placeholder="Full Name" required>
+                <input type="tel" name="phone" placeholder="Phone Number" required>
+                <input type="number" name="age" placeholder="Age" required>
+                <input type="number" name="weight" placeholder="Weight (kg)" required>
+                <input type="number" name="height" placeholder="Height (cm)" required>
+                <input type="text" name="diseases" placeholder="Long-term Diseases (e.g. Diabetes, BP, Stroke)">
+                <input type="text" name="emergency" placeholder="Emergency Contact Name" required>
+                <input type="text" name="emergencyNumber" placeholder="Emergency Contact Number" required>
+                <textarea name="details" placeholder="Other Details"></textarea>
+                <div class="profile-actions">
+                    <button id="edit-toggle" type="button" class="icon-btn edit-action" aria-label="Edit Profile">Edit</button>
+                    <button id="save-btn" type="submit" class="icon-btn add-action" aria-label="Save Profile">
+                        <span class="btn-label">Save</span>
+                    </button>
+                </div>
+            </form>
+            <div id="profile-display" style="display:none"></div>
+                <div id="profile-msg" class="profile-msg" aria-live="polite" style="display:none;margin-top:8px;color:green"></div>
+        </div>
+    </div>
+    <script src="profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Records - Healthcare Reminder System</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="main-nav">
+            <div class="nav-brand">
+                <h2>Healthcare Reminder System</h2>
+            </div>
+            <div class="nav-links">
+                <a href="medications.html">Medications</a>
+                <a href="appointments.html">Appointments</a>
+                <a href="records.html" class="active">Medical Records</a>
+                <a href="profile.html">Patient Details</a>
+                <a href="contacts.html">Emergency Contacts</a>
+                <button onclick="logout()" class="logout-btn">Logout</button>
+            </div>
+        </nav>
+
+        <div class="content-area">
+            <div class="page-header">
+                <h1>Medical Records</h1>
+                <button onclick="showAddRecordForm()" class="add-btn">Add New Record</button>
+            </div>
+
+            <div class="records-tabs">
+                <button class="tab-btn active" onclick="showTab('prescriptions')">Prescriptions</button>
+                <button class="tab-btn" onclick="showTab('reports')">Test Reports</button>
+                <button class="tab-btn" onclick="showTab('history')">Medical History</button>
+            </div>
+
+            <div id="prescriptions" class="tab-content">
+                <div class="records-list">
+                    <!-- Prescription records will be added here -->
+                </div>
+            </div>
+
+            <div id="reports" class="tab-content hidden">
+                <div class="records-list">
+                    <!-- Test reports will be added here -->
+                </div>
+            </div>
+
+            <div id="history" class="tab-content hidden">
+                <div class="records-list">
+                    <!-- Medical history records will be added here -->
+                </div>
+            </div>
+
+            <div id="add-record-form" class="modal hidden">
+                <div class="modal-content">
+                    <h2>Add New Medical Record</h2>
+                    <form onsubmit="return saveRecord(event)">
+                        <div class="form-group">
+                            <label for="record-type">Record Type</label>
+                            <select id="record-type" required>
+                                <option value="prescription">Prescription</option>
+                                <option value="report">Test Report</option>
+                                <option value="history">Medical History</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="record-title">Title</label>
+                            <input type="text" id="record-title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="record-date">Date</label>
+                            <input type="date" id="record-date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="record-doctor">Doctor</label>
+                            <input type="text" id="record-doctor" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="record-file">Upload File</label>
+                            <input type="file" id="record-file" accept=".pdf,.jpg,.png,.doc,.docx">
+                        </div>
+                        <div class="form-group">
+                            <label for="record-notes">Notes</label>
+                            <textarea id="record-notes" rows="3"></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" onclick="hideAddRecordForm()" class="cancel-btn">Cancel</button>
+                            <button type="submit" class="save-btn">Save Record</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../app.js"></script>
+</body>
+</html>

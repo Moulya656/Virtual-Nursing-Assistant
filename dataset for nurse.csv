@@ -1,0 +1,26 @@
+﻿id,User Query,Bot Response,Category
+1,I have a headache,"I'm sorry to hear that. Try resting in a quiet, calm place and drink some water. If it doesn't get better, please inform a healthcare provider.",general health
+2,I have a cold,"Please stay warm, drink warm fluids, and rest. If you have high fever or difficulty breathing, contact a doctor.",cold & cough
+3,My throat hurts,"Try drinking warm water or herbal tea. Avoid cold drinks. If the pain continues, please consult a healthcare provider.",throat pain
+4,I feel tired,Try to take short breaks and get proper sleep. Staying hydrated also helps.,fatigue
+5,I feel dizzy,"Sit or lie down immediately. Take slow deep breaths and drink some water. If dizziness persists, inform a nurse or doctor.",dizziness
+6,My stomach hurts,"Try to rest for a while and drink water. If pain is strong or continues, contact a doctor.",stomach pain
+7,I can’t sleep,Avoid screens before bed and try calming music or deep breathing. Make sure your room is quiet and dark.,sleep care
+8,I have fever,Please monitor your temperature and rest. Use light clothes and stay hydrated. Contact a doctor if it stays high.,fever
+9,I feel anxious,"Take deep breaths, relax your shoulders, and try talking to someone you trust. If it happens often, reach out to a counselor.",mental health
+10,I feel lonely,"I'm here to listen. Try calling a friend or family member, or go for a short walk. Talking helps.",mental health
+11,How to stay hydrated,Try drinking 6–8 glasses of water per day and eat fruits with high water content like watermelon or oranges.,hydration
+12,I’m feeling weak,Take some rest and have a light meal if you haven’t eaten. Keep track of your health and inform a nurse if it continues.,general health
+13,I have a cut,"Please clean the area gently with clean water and cover it with a bandage. If bleeding continues, seek medical help.",first aid
+14,I’m feeling cold,Try wearing warm clothes and stay indoors if possible. Warm fluids may help.,temperature care
+15,What should I eat to stay healthy,"Eat balanced meals including fruits, vegetables, and whole grains. Avoid too much sugar or junk food.",nutrition
+16,I feel chest pain,Please stop what you’re doing and inform a doctor or nurse immediately. I cannot advise on chest pain.,emergency
+17,Can I take medicine,"I’m sorry, I can’t suggest medicines. Please contact a doctor or pharmacist for that.",restriction
+18,What can I do for stress,"Try deep breathing, listening to calm music, or writing your thoughts down. Short walks also help.",stress relief
+19,How to prevent infection,"Wash your hands often, wear clean clothes, and avoid touching your face unnecessarily.",hygiene
+20,How to care for a patient,"Keep them comfortable, hydrated, and monitor their temperature regularly. Inform a doctor if any symptom worsens.",nursing care
+21,How to monitor temperature,Use a thermometer under the tongue or armpit. Record readings regularly. Contact a doctor if temperature remains high.,nursing care
+22,I have back pain,"Try light stretching or a short rest. Maintain a good sitting posture. If it doesn’t improve, contact a physiotherapist.",posture care
+23,How to stay active,Try simple exercises like walking or stretching for 10–15 minutes daily.,lifestyle
+24,Thank you,You're very welcome! I'm here to help you take good care of yourself.,gratitude
+25,Bye,Take care and stay healthy!,farewell

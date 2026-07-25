@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Profile - Healthcare Reminder System</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="main-nav">
+            <div class="nav-brand">
+                <h2>Healthcare Reminder System</h2>
+            </div>
+            <div class="nav-links">
+                <a href="medications.html">Medications</a>
+                <a href="appointments.html">Appointments</a>
+                <a href="records.html">Medical Records</a>
+                <a href="profile.html" class="active">Patient Details</a>
+                <a href="contacts.html">Emergency Contacts</a>
+                <button onclick="logout()" class="logout-btn">Logout</button>
+            </div>
+        </nav>
+
+        <div class="content-area">
+            <div class="page-header">
+                <h1>Patient Profile</h1>
+                <button onclick="enableEditProfile()" class="edit-btn">Edit Profile</button>
+            </div>
+
+            <div class="profile-container">
+                <form id="profile-form" onsubmit="return updateProfile(event)">
+                    <div class="profile-section">
+                        <h3>Personal Information</h3>
+                        <div class="form-group">
+                            <label for="profile-name">Full Name</label>
+                            <input type="text" id="profile-name" required disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="profile-dob">Date of Birth</label>
+                            <input type="date" id="profile-dob" required disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="profile-gender">Gender</label>
+                            <select id="profile-gender" required disabled>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="profile-blood">Blood Type</label>
+                            <select id="profile-blood" required disabled>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="profile-section">
+                        <h3>Contact Information</h3>
+                        <div class="form-group">
+                            <label for="profile-phone">Phone Number</label>
+                            <input type="tel" id="profile-phone" required disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="profile-email">Email</label>
+                            <input type="email" id="profile-email" required disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="profile-address">Address</label>
+                            <textarea id="profile-address" rows="3" required disabled></textarea>
+                        </div>
+                    </div>
+
+                    <div class="profile-section">
+                        <h3>Medical Information</h3>
+                        <div class="form-group">
+                            <label for="profile-allergies">Allergies</label>
+                            <textarea id="profile-allergies" rows="3" disabled></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="profile-conditions">Chronic Conditions</label>
+                            <textarea id="profile-conditions" rows="3" disabled></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="profile-insurance">Insurance Details</label>
+                            <textarea id="profile-insurance" rows="3" disabled></textarea>
+                        </div>
+                    </div>
+
+                    <div id="profile-actions" class="form-actions hidden">
+                        <button type="button" onclick="cancelEditProfile()" class="cancel-btn">Cancel</button>
+                        <button type="submit" class="save-btn">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="../app.js"></script>
+</body>
+</html>

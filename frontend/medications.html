@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medications</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="main-nav">
+            <div class="nav-left">
+                <a href="index.html" class="home-link">🏠 Home</a>
+            </div>
+            <div class="nav-right">
+                <h1>Medications</h1>
+            </div>
+        </nav>
+        <div class="content-section">
+            <div class="list-header">
+                <div class="left-actions">
+                    <button onclick="showAddMedicationForm()" class="icon-btn add-action" aria-label="Add Medication">
+                        <svg class="add-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                        <span class="btn-label">Add New</span>
+                    </button>
+                </div>
+                <div class="list-title">
+                    <h2>Your Medications</h2>
+                </div>
+            </div>
+            <div id="medications-list"></div>
+        </div>
+        <div id="add-medication-modal" class="modal hidden">
+            <div class="modal-content med-modal">
+                <div class="med-modal-grid">
+                    <div class="med-modal-header">
+                        <h2>Add Medication</h2>
+                        <p class="muted">Add a medication with dosage, schedule and instructions.</p>
+                    </div>
+                    <form id="medication-form" class="med-form">
+                        <div class="form-col col-left">
+                            <div class="form-group">
+                                <label for="med-name">Medication Name</label>
+                                <input type="text" id="med-name" name="name" placeholder="e.g. Sugar Tablet" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="med-dosage">Dosage</label>
+                                <input type="text" id="med-dosage" name="dosage" placeholder="e.g. 1 tablet" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="med-time">Time</label>
+                                <input type="time" id="med-time" name="time" required>
+                            </div>
+                        </div>
+                        <div class="form-col col-right">
+                            <div class="form-group">
+                                <label for="med-how">How to take</label>
+                                <select id="med-how" name="how">
+                                    <option value="oral">Oral</option>
+                                    <option value="subcutaneous">Subcutaneous</option>
+                                    <option value="intravenous">Intravenous</option>
+                                    <option value="inhalation">Inhalation</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="med-instructions">Instructions</label>
+                                <textarea id="med-instructions" name="instructions" rows="4" placeholder="Any special instructions (take after food, avoid alcohol, etc.)"></textarea>
+                            </div>
+                            <div class="form-actions med-actions">
+                                <button type="button" class="cancel-btn" onclick="closeMedicationModal()">Cancel</button>
+                                <button type="submit" class="save-btn">Save Medication</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="Medications.js"></script>
+</body>
+</html>

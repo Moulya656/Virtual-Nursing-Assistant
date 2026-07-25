@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Records</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="main-nav">
+            <div class="nav-left">
+                <a href="index.html" class="home-link">🏠 Home</a>
+            </div>
+            <div class="nav-right">
+                <h1>Medical Records</h1>
+            </div>
+        </nav>
+        <div class="content-section">
+                                    <form id="upload-form">
+                                            <div class="upload-row">
+                                                <input type="file" id="record-file" required>
+                                                <input type="text" id="record-name" placeholder="File Name" required>
+                                            </div>
+                                    </form>
+                                    <div id="records-list"></div>
+                                    <div id="record-preview-modal" class="modal hidden">
+                                        <div class="modal-content">
+                                            <div id="record-preview-body"></div>
+                                            <div class="form-actions" style="margin-top: 12px; text-align: right;">
+                                                <button type="button" id="record-preview-close" class="save-btn">OK</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="add-bottom">
+                                        <button type="submit" form="upload-form" class="icon-btn add-action" aria-label="Upload Record">
+                                            <svg class="add-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                                <polyline points="7 10 12 5 17 10"></polyline>
+                                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                            </svg>
+                                            <span class="btn-label">Upload</span>
+                                        </button>
+                                    </div>
+        </div>
+    </div>
+    <script src="records.js"></script>
+</body>
+</html>
